@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://www.netbeans.org/ns/project/1">
+    <type>org.netbeans.modules.ant.freeform</type>
+    <configuration>
+        <general-data xmlns="http://www.netbeans.org/ns/freeform-project/1">
+            <name>TicTacToe++</name>
+        </general-data>
+        <general-data xmlns="http://www.netbeans.org/ns/freeform-project/2">
+            <name>TicTacToe++</name>
+            <properties>
+                <property name="project.dir">.</property>
+                <property-file>${project.dir}/ant.properties</property-file>
+                <property name="project.xml">${project.dir}/nbproject/project.xml</property>
+            </properties>
+            <folders>
+                <source-folder>
+                    <label>Game</label>
+                    <location>.</location>
+                    <encoding>UTF-8</encoding>
+                </source-folder>
+                <source-folder>
+                    <label>source</label>
+                    <type>java</type>
+                    <location>${project.dir}/${src.dir}</location>
+                    <encoding>UTF-8</encoding>
+                </source-folder>
+                <source-folder>
+                    <label>source-util</label>
+                    <type>java</type>
+                    <location>${project.dir}/${util.src.dir}</location>
+                    <encoding>UTF-8</encoding>
+                </source-folder>
+            </folders>
+            <ide-actions>
+                <action name="build">
+                    <script>${project.dir}/${ant.script}</script>
+                    <target>build</target>
+                </action>
+                <action name="clean">
+                    <script>${project.dir}/${ant.script}</script>
+                    <target>clean</target>
+                </action>
+                <action name="run">
+                    <script>${project.dir}/${ant.script}</script>
+                    <target>run</target>
+                </action>
+                <action name="rebuild">
+                    <script>${project.dir}/${ant.script}</script>
+                    <target>clean</target>
+                    <target>build</target>
+                </action>
+            </ide-actions>
+            <export>
+                <type>folder</type>
+                <location>${project.dir}/${bin.dir}</location>
+                <script>${project.dir}/${ant.script}</script>
+                <build-target>build</build-target>
+            </export>
+            <export>
+                <type>folder</type>
+                <location>${project.dir}/${bin.dir}</location>
+                <script>${project.dir}/${ant.script}</script>
+                <build-target>build</build-target>
+            </export>
+            <view>
+                <items>
+                    <source-folder style="folder">
+                        <label>lib</label>
+                        <location>${project.dir}/${lib.root.dir.name}</location>
+                    </source-folder>
+                    <source-folder style="packages">
+                        <label>source</label>
+                        <location>${project.dir}/${src.dir}</location>
+                    </source-folder>
+                    <source-folder style="packages">
+                        <label>source-util</label>
+                        <location>${project.dir}/${util.src.dir}</location>
+                    </source-folder>
+                    <source-file>
+                        <label>build.xml</label>
+                        <location>${project.dir}/${ant.script}</location>
+                    </source-file>
+                    <source-file>
+                        <label>ant.properties</label>
+                        <location>${project.dir}/${ant.properties.file}</location>
+                    </source-file>
+                    <source-file>
+                        <label>project.xml</label>
+                        <location>${project.xml}</location>
+                    </source-file>
+                </items>
+                <context-menu>
+                    <ide-action name="build"/>
+                    <ide-action name="rebuild"/>
+                    <ide-action name="clean"/>
+                    <ide-action name="run"/>
+                </context-menu>
+            </view>
+            <subprojects/>
+        </general-data>
+        <java-data xmlns="http://www.netbeans.org/ns/freeform-project-java/4">
+            <compilation-unit>
+                <package-root>${project.dir}/${src.dir}</package-root>
+                <classpath mode="compile">lib/include/jconfig-0.1.jar;lib/sources/jconfig-0.1-sources.jar;src-util</classpath>
+                <built-to>${project.dir}/${bin.dir}</built-to>
+                <source-level>1.7</source-level>
+            </compilation-unit>
+            <compilation-unit>
+                <package-root>${project.dir}/${util.src.dir}</package-root>
+                <classpath mode="compile">lib/include/jconfig-0.1.jar;lib/sources/jconfig-0.1-sources.jar</classpath>
+                <built-to>${project.dir}/${bin.dir}</built-to>
+                <source-level>1.7</source-level>
+            </compilation-unit>
+        </java-data>
+    </configuration>
+</project>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Config>
+    <Numbers />
+    <Strings>
+        <entry key="image.x.file.location" value="x.png" />
+        <entry key="image.o.file.location" value="o.png" />
+        <entry key="image.x.file.location.type" value="EMBEDDED" />
+        <entry key="image.o.file.location.type" value="EMBEDDED" />
+        <entry key="color.playable" value="#00FF00" />
+        <entry key="color.unplayable" value="#FF0000"/>
+    </Strings>
+    <Booleans/>
+</Config>

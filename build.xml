@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project name="TicTacToe++" default="build" basedir=".">
+    
+    <description>TicTacToe++</description>
+    
+    <target name="build" depends="jar-all" />
+    
+    <target name="init-properties">
+        <property file="ant.properties" />
+    </target>
+    
+    <target name="clean" depends="clean-dist, clean-build" />
+    
+    <target name="clean-dist" depends="init-properties">
+        <delete dir="${dist.dir}" />
+    </target>
+    
+    <target name="clean-build" depends="init-properties">
+        <delete dir="${bin.dir}" />
+    </target>
+    
+    <target name="init" depends="clean-build">
+        <mkdir dir="${bin.dir}" />
+        <mkdir dir="${build.dir}" />
+    </target>
+    
+    <target name="compile" depends="init">
+        <pathconvert property="common.compile.classpath"
+            pathsep=";">
+            <fileset dir="${lib.dir}" includes="**/*.jar"/>
+            <mapper>
+                <chainedmapper>
+                </chainedmapper>
+            </mapper>
+        </pathconvert>
+        <javac srcdir="${util.src.dir}" destdir="${build.dir}"
+            classpath="${common.compile.classpath}" includeantruntime="false"
+            deprecation="on">
+            <compilerarg value="-Xlint:unchecked" />
+        </javac>
+        <copy todir="${build.dir}" flatten="false" failonerror="yes">
+            <fileset dir="${util.src.dir}" excludes="**/*.java" />
+        </copy>
+        <javac srcdir="${src.dir}" destdir="${build.dir}"
+            classpath="${common.compile.classpath};${build.dir}" includeantruntime="false"
+            deprecation="on">
+            <compilerarg value="-Xlint:unchecked" />
+        </javac>
+        <copy todir="${build.dir}" flatten="false" failonerror="yes">
+            <fileset dir="${src.dir}" excludes="**/*.java" />
+        </copy>
+    </target>
+    
+    <target name="jar-all" depends="clean-dist, jar" />
+    
+    <target name="jar" depends="compile">
+        <mkdir dir="${dist.dir}" />
+        <tstamp>
+            <format property="current.time" pattern="dd-MM-yyyy @ HH:mm:ss" />
+        </tstamp>
+        <jar destfile="${dist.jar}">
+            <fileset dir="${build.dir}" />
+            <zipgroupfileset dir="${lib.dir}" includes="**/*.jar" />
+            <manifest>
+                <attribute name="Main-Class" value="${dist.main.class.name}" />
+                <attribute name="Application-Vendor" value="${application.vendor}" />
+                <attribute name="Build-Time" value="${current.time} (DD-MM-YYYY @ hh:mm:ss)" />
+            </manifest>
+        </jar>
+    </target>
+    
+    <target name="run" depends="build">
+        <java jar="${dist.jar}" fork="true" />
+    </target>
+    
+</project>
